@@ -1,5 +1,11 @@
 import Image from 'next/image'
 
+const metaBoard = [
+  ['0', '1', '2'],
+  ['3', '4', '5'],
+  ['6', '7', '8']
+]
+
 const CircleIcon = () => {
   return (      
     <Image
@@ -26,17 +32,40 @@ const CrossIcon = () => {
   )
 }
 
+const Square = (
+  content: any
+) => {
+  return (
+    <div className="">
+      1
+    </div>
+  )
+}
+
 const Board = () => {
   return (
-    <div></div>
+    <>
+      { 
+        metaBoard.map(row => {
+          row.map(square => {
+            return (
+              <div key={square} >
+               <Square  
+                content={square}
+               />
+              </div>
+            )
+          })
+        }) 
+      }
+    </>
   )
 }
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <CircleIcon />
-      <CrossIcon />
+      <Board />
     </main>
   )
 }
